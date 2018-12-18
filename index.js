@@ -21,15 +21,14 @@ class Vehicle {
 }
 
 class Car extends Vehicle {
-  constructor(make, model, topSpeed, color, year, numberOfWheels, fuelType, dealership){
+  constructor(make, model, topSpeed, color, year, numberOfWheels, dealership){
     super(make, model, topSpeed, color, year);
     this.numberOfWheels = numberOfWheels;
-    this.fuelType = fuelType;
     this.dealership = dealership;
   }
 
   fillGasTank(){
-    console.log(`Filling ${this.model} with ${this.fuelType} gas`);
+    console.log(`Filling ${this.model} with cheap gas`);
   }
 
   payToll(){
@@ -59,6 +58,23 @@ class Airplane extends Vehicle {
   }
 }
 
+class SportsCar extends Car {
+  constructor(make, model, topSpeed, color, year, numberOfWheels, dealership, racingStripe, countryOfOrigin){
+    super(make, model, topSpeed, color, year, numberOfWheels, dealership)
+    this.racingStripe = racingStripe;
+    this.countryOfOrigin = countryOfOrigin;
+  }
+
+  goReallyFast(){
+    console.log(`Wow this ${this.model} sports car is going really fast`);
+  }
+
+  fillGasTank(){
+    //super.fillGasTank(); //invookes generic behavior from parent
+    console.log(`Filling ${this.model} with expensive gas`);
+  }
+}
+
 let vehicleOne = new Vehicle("Jeep", "Wrangler", 75, "black", 2016);
 let vehicleTwo = new Vehicle("Boeing", "787", 600, "white", 2018);
 
@@ -70,8 +86,8 @@ vehicleTwo.accelerate();
 
 console.log("—————————");
 
-let carOne = new Car("Honda", "Civic", 85, "red", 2019, 4, "regular", "Dealship A");
-let carTwo = new Car("Audi", "R8", 160, "silver", 2017, 4, "premium", "Dealship C");
+let carOne = new Car("Honda", "Civic", 85, "red", 2019, 4, "Dealship A");
+let carTwo = new Car("Audi", "A6", 160, "silver", 2017, 4, "Dealship C");
 
 console.log("carOne", carOne);
 console.log("carTwo", carTwo);
@@ -92,3 +108,9 @@ airplaneOne.serveFood();
 airplaneTwo.serveFood();
 airplaneOne.takeOff();
 airplaneTwo.land();
+
+let sportsCarOne = new SportsCar("Porche", "911", 150, "yellow", 2019, 2, "Porche Dealership", true, "Germany");
+console.log("sportsCarOne", sportsCarOne);
+
+sportsCarOne.fillGasTank();
+sportsCarOne.accelerate();

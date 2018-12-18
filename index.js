@@ -20,8 +20,12 @@ class Vehicle {
   };
 }
 
+//"EXTENDS" creates a class which is a child of another class.
 class Car extends Vehicle {
+  //Constructor creates and initalizes an object within a class
   constructor(make, model, topSpeed, color, year, numberOfWheels, dealership){
+    //super keyword is used to access and call functions on an object's parent.
+    //Super used inside of constructor allows access to parent constructor
     super(make, model, topSpeed, color, year);
     this.numberOfWheels = numberOfWheels;
     this.dealership = dealership;
@@ -70,10 +74,16 @@ class SportsCar extends Car {
   }
 
   fillGasTank(){
-    //super.fillGasTank(); //invookes generic behavior from parent
+    //super.fillGasTank(); //invokes generic behavior from parent
+    //super keyword is used to access and call functions on an object's parent.
+    //Super inside this method allows object to access generic behavior provided by parent
     console.log(`Filling ${this.model} with expensive gas`);
   }
 }
+
+// class MyClass extends Null {
+  //extending null if you dont want inheritance from Object.protoype;
+// }
 
 let vehicleOne = new Vehicle("Jeep", "Wrangler", 75, "black", 2016);
 let vehicleTwo = new Vehicle("Boeing", "787", 600, "white", 2018);
